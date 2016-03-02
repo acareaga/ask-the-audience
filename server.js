@@ -1,7 +1,8 @@
 const http = require('http');
 const express = require('express');
 const app = express();
-const server = http.createServer(app)
+const server = http.createServer(app);
+const bodyParser = require('body-parser');
 
 // MAKE SURE SOCKET IO IS BELOW SERVER
 const socketIo = require('socket.io');
@@ -10,12 +11,15 @@ const port = process.env.PORT || 3000;
 
 server.listen(port, function () { console.log('Listening on port ' + port + '.'); });
 
+// HTTP PARSER
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static('public'));
 
 app.get('/', function (req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
-
 
 // SOCKET IO CONNECTIONS
 var votes = {};
@@ -29,14 +33,13 @@ io.on('connection', function (socket) {
   // socket.emit to only one client
   socket.emit('statusMessage', 'You have connected.');
 
-  // emit to indv client the vote they cast
-  socket.emit('myVoteCast', io.engine.myVoteCast);
-
-  // capture votes
+  // count votes and show user what they chose
   socket.on('message', function (channel, message) {
     if (channel === 'voteCast') {
       votes[socket.id] = message;
       socket.emit('voteCount', countVotes(votes));
+      // emit to indv client the vote they cast
+      socket.emit('myVoteCast', 'You voted for "' + message + '"');
     }
   });
 

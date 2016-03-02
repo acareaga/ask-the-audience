@@ -7,13 +7,6 @@ socket.on('usersConnected', function (count) {
   connectionCount.innerText = 'Connected Users: ' + count;
 });
 
-// EMIT THE INDV VOTE CAST BY USER
-var myVote = document.getElementById('my-vote');
-
-socket.on('myVoteCast', function (vote) {
-  myVote.innerText = 'You voted for' + vote;
-});
-
 // socket.emit to only one client, message below
 var statusMessage = document.getElementById('status-message');
 
@@ -39,4 +32,11 @@ socket.on('voteCount', function (votes) {
     votesToDisplay = votesToDisplay + ' ' + vote + ': ' + votes[vote] + ' ';
   }
   count.innerText = votesToDisplay;
+});
+
+// EMIT THE INDV VOTE CAST BY USER
+var myVote = document.getElementById('my-vote');
+
+socket.on('myVoteCast', function (vote) {
+  myVote.innerText = vote;
 });

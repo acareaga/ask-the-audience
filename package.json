@@ -24,12 +24,15 @@
   },
   "homepage": "https://github.com/acareaga/ask-the-audience#readme",
   "dependencies": {
+    "body-parser": "1.15.0",
+    "chai": "3.5.0",
     "express": "4.13.4",
     "lodash": "4.6.0",
     "socket.io": "1.4.5"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "2.4.5"
+    "mocha": "2.4.5",
+    "request": "2.69.0"
   }
 }

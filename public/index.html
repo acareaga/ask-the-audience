@@ -2,23 +2,38 @@
 <html>
   <head>
     <title>Ask the Audience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
   </head>
+
+  <main>
   <body>
+    <header>
+      <nav class="z-depth-0 navbar">
+        <div class="nav-wrapper white lighten-4">
+          <a href="/" class="brand-logo black-text center" id="navbar-branding">Poll the Crowd</a>
+        </div>
+      </nav>
 
-    <h1>Poll the Crowd</h1>
+      <div class="container center">
+        <br><br>
 
-    <div id="my-vote"></div><br>
+        <div id="status-message"></div>
+        <div id="connection-count"></div><br>
 
-    <div id="choices">
-      <button>A</button>
-      <button>B</button>
-      <button>C</button>
-      <button>D</button>
-    </div><br>
+        <h5>Where do you want to eat lunch on Friday?</h5><br>
 
-    <div id="status-message"></div>
-    <div id="connection-count"></div><br>
-    <div id="vote-count"></div>
+        <div id="choices">
+          <button>A</button>
+          <button>B</button>
+          <button>C</button>
+          <button>D</button>
+        </div><br>
+
+        <div id="my-vote"></div><br>
+        <div id="vote-count"></div><br>
+      </div>
+    </main>
 
     <!-- Make sure your JS is at the bottom of the body! -->
     <script src="/socket.io/socket.io.js"></script>

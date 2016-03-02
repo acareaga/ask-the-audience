@@ -9,7 +9,11 @@ const socketIo = require('socket.io');
 const io = socketIo(server);
 const port = process.env.PORT || 3000;
 
-server.listen(port, function () { console.log('Listening on port ' + port + '.'); });
+if (!module.parent) {
+  server.listen(port, function () { console.log('Listening on port ' + port + '.'); });
+}
+
+// server.listen(port, function () { console.log('Listening on port ' + port + '.'); });
 
 // HTTP PARSER
 app.use(bodyParser.json());

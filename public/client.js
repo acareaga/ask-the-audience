@@ -27,7 +27,7 @@ for (var i = 0; i < buttons.length; i++) {
 var count = document.getElementById('vote-count');
 
 socket.on('voteCount', function (votes) {
-  var votesToDisplay = "Vote Count";
+  var votesToDisplay = "Vote Count:";
   for (var vote in votes) {
     votesToDisplay = votesToDisplay + ' ' + vote + ': ' + votes[vote] + ' ';
   }

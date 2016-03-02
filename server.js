@@ -29,6 +29,9 @@ io.on('connection', function (socket) {
   // socket.emit to only one client
   socket.emit('statusMessage', 'You have connected.');
 
+  // emit to indv client the vote they cast
+  socket.emit('myVoteCast', io.engine.myVoteCast);
+
   // capture votes
   socket.on('message', function (channel, message) {
     if (channel === 'voteCast') {

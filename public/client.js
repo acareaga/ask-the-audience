@@ -23,6 +23,16 @@ for (var i = 0; i < buttons.length; i++) {
 }
 
 // LOG VOTE COUNT
+var count = document.getElementById('vote-count');
+
 socket.on('voteCount', function (votes) {
-  console.log(votes);
+  var votesToDisplay = "Vote Count";
+  for (var vote in votes) {
+    votesToDisplay = votesToDisplay
+                    + ' '
+                    + vote
+                    + ': ' + votes[vote]
+                    + ' ';
+  }
+  count.innerText = votesToDisplay;
 });
